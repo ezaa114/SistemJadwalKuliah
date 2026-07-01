@@ -117,4 +117,3 @@ Pastikan Anda sudah menginstal **Node.js** dan **npm** di komputer Anda.
 *   **Integrasi Backend**: Struktur data dirancang agar mudah diganti dari array statis ke panggilan REST API menggunakan Axios atau Fetch.
 *   **Lokalisasi**: Format hari dan jam saat ini dihardcode menggunakan format waktu akademik lokal (WIB).
 
-Dibuat dengan ❤️ oleh **[ezaa114](https://github.com/ezaa114)**.

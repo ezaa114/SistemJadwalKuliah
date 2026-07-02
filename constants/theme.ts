@@ -1,32 +1,49 @@
 export const LightColors = {
-  background: '#F8FAFC',       // Clean slate-50 dashboard background
-  surface: '#FFFFFF',          // Crisp white cards
-  surfaceLow: '#F1F5F9',       // Slate-100
-  border: '#E2E8F0',           // Slate-200 thin border
-  accent: '#1E3A8A',           // Academic Navy Blue (Slate-900 equivalent)
-  accentTransparent: 'rgba(30, 58, 138, 0.08)',
-  textPrimary: '#0F172A',      // Slate-900 dark text
-  textSecondary: '#475569',    // Slate-600 secondary text
-  tabBarBackground: '#FFFFFF',
-  tabBarInactive: '#64748B',   // Slate-500
-  shadow: '#0F172A',
+  background: '#F6F3EC',
+  surface: '#FFFFFF',
+  surfaceLow: '#FBF9F4',
+  surface2: '#FBF9F4',
+  border: '#E3DFD3',
+  accent: '#A9791F', // accentGold
+  accentGold: '#A9791F',
+  accentGoldText: '#7A5A16',
+  accentTransparent: 'rgba(169, 121, 31, 0.12)',
+  text: '#1B2333',
+  textPrimary: '#1B2333',
+  textSecondary: '#5B6472',
+  tabBarBackground: '#FBF9F4',
+  tabBarInactive: '#5B6472',
+  shadow: 'rgba(27, 35, 51, 0.05)',
 };
 
 export const DarkColors = {
-  background: '#0F172A',       // Deep Navy/Slate-900 background
-  surface: '#1E293B',          // Slate-800 cards
-  surfaceLow: '#334155',       // Slate-700
-  border: '#334155',           // Slate-700 dark border
-  accent: '#60A5FA',           // Light Slate Blue
-  accentTransparent: 'rgba(96, 165, 250, 0.15)',
-  textPrimary: '#F8FAFC',      // Slate-50 light text
-  textSecondary: '#94A3B8',    // Slate-400 muted text
-  tabBarBackground: '#1E293B',
-  tabBarInactive: '#64748B',
+  background: '#0B0E14',
+  surface: '#141922',
+  surfaceLow: '#1B212C',
+  surface2: '#1B212C',
+  border: '#262D3A',
+  accent: '#D4AF5A', // accentGold
+  accentGold: '#D4AF5A',
+  accentGoldText: '#E8C97A',
+  accentTransparent: 'rgba(212, 175, 90, 0.15)',
+  text: '#EDEAE2',
+  textPrimary: '#EDEAE2',
+  textSecondary: '#9BA3B0',
+  tabBarBackground: '#1B212C',
+  tabBarInactive: '#9BA3B0',
   shadow: '#000000',
 };
 
 export const Colors = LightColors;
+
+export const SpineColors = [
+  '#D85A30',
+  '#1D9E75',
+  '#378ADD',
+  '#7F77DD',
+  '#BA7517',
+  '#D4537E',
+];
 
 export const Spacing = {
   xs: 4,
@@ -38,15 +55,16 @@ export const Spacing = {
 };
 
 export const BorderRadius = {
-  card: 16,       // Clean modern rounded corners
-  badge: 9999,     // Pill-shaped badges
+  card: 12,
+  badge: 9999,
 };
 
 export const Fonts = {
-  regular: 'Roboto_400Regular',
-  medium: 'Roboto_500Medium',
-  bold: 'Roboto_700Bold',
-  fallback: 'sans-serif',
+  regular: 'JetBrainsMono_400Regular',
+  medium: 'JetBrainsMono_500Medium',
+  bold: 'JetBrainsMono_700Bold',
+  fallback: 'monospace',
 };
 
 export const SPLIT_BREAKPOINT = 768;
+

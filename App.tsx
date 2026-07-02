@@ -5,10 +5,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import {
   useFonts,
-  Roboto_400Regular,
-  Roboto_500Medium,
-  Roboto_700Bold,
-} from '@expo-google-fonts/roboto';
+  JetBrainsMono_400Regular,
+  JetBrainsMono_500Medium,
+  JetBrainsMono_700Bold,
+} from '@expo-google-fonts/jetbrains-mono';
 
 import RingkasanScreen from './screens/RingkasanScreen';
 import PertemuanScreen from './screens/PertemuanScreen';
@@ -21,9 +21,9 @@ const Tab = createBottomTabNavigator();
 
 function AppContent() {
   const [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Roboto_700Bold,
+    JetBrainsMono_400Regular,
+    JetBrainsMono_500Medium,
+    JetBrainsMono_700Bold,
     ...Feather.font,
     ...Ionicons.font,
   });
@@ -79,7 +79,7 @@ function AppContent() {
               shadowOpacity: 0,
             },
             tabBarLabelStyle: {
-              fontFamily: 'Roboto_500Medium',
+              fontFamily: 'JetBrainsMono_500Medium',
               fontSize: 11,
               marginTop: 2,
             },

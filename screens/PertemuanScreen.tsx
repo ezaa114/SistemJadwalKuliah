@@ -198,10 +198,10 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
   },
   themeToggle: {
     padding: Spacing.sm,
-    borderRadius: 0,
-    borderWidth: 2,
+    borderRadius: 8,
+    borderWidth: 1,
     borderColor: colors.border,
-    backgroundColor: colors.surface,
+    backgroundColor: colors.surfaceLow,
   },
   subtitle: {
     fontFamily: Fonts.regular,
@@ -213,17 +213,17 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.xs,
-    backgroundColor: colors.accent,
-    borderWidth: 2,
+    backgroundColor: colors.accentTransparent,
+    borderWidth: 1,
     borderColor: colors.border,
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.sm,
-    borderRadius: 0,
+    borderRadius: 8,
   },
   toggleText: {
-    fontFamily: Fonts.bold,
+    fontFamily: Fonts.medium,
     fontSize: 11,
-    color: colors.textPrimary,
+    color: colors.accentGoldText,
   },
   separator: {
     height: 1,
@@ -263,15 +263,17 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
     maxWidth: 300,
   },
   emptyButton: {
-    backgroundColor: colors.accent,
+    backgroundColor: colors.accentTransparent,
     paddingHorizontal: Spacing.xl,
     paddingVertical: Spacing.md,
-    borderRadius: BorderRadius.badge,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: colors.accent,
   },
   emptyButtonText: {
     fontFamily: Fonts.medium,
     fontSize: 13,
-    color: '#FFFFFF',
+    color: colors.accentGoldText,
   },
   // Detail styles
   detailContainer: {
@@ -342,9 +344,9 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: Spacing.lg,
     paddingVertical: Spacing.md,
-    borderBottomWidth: 3,
+    borderBottomWidth: 1,
     borderBottomColor: colors.border,
-    backgroundColor: colors.tabBarBackground,
+    backgroundColor: colors.surfaceLow,
   },
   backButton: {
     flexDirection: 'row',
@@ -352,7 +354,7 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
     gap: Spacing.sm,
   },
   backText: {
-    fontFamily: Fonts.bold,
+    fontFamily: Fonts.medium,
     fontSize: 15,
     color: colors.accent,
   },

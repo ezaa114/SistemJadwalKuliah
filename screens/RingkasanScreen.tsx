@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import {
   View,
   Text,
-  ScrollView,
+  FlatList,
   StyleSheet,
   useWindowDimensions,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -13,7 +14,7 @@ import { dataMataKuliah, MataKuliah } from '../data/matakuliah';
 import MatkulCard from '../components/MatkulCard';
 import DetailPanel from '../components/DetailPanel';
 import SplitLayout from '../components/SplitLayout';
-import { Colors, Spacing, Fonts, BorderRadius, SPLIT_BREAKPOINT } from '../constants/theme';
+import { Colors, Spacing, Fonts, SpineColors, SPLIT_BREAKPOINT } from '../constants/theme';
 import { useTheme } from '../context/ThemeContext';
 
 export default function RingkasanScreen() {
@@ -36,7 +37,7 @@ export default function RingkasanScreen() {
               onPress={() => setSelected(null)}
               activeOpacity={0.7}
             >
-              <Feather name="arrow-left" size={20} color={colors.accent} />
+              <Feather name="arrow-left" size={20} color={colors.accentGold} />
               <Text style={styles.backText}>Kembali</Text>
             </TouchableOpacity>
           </View>
@@ -47,47 +48,45 @@ export default function RingkasanScreen() {
   }
 
   const masterContent = (
-    <ScrollView
-      style={styles.scrollView}
-      contentContainerStyle={styles.scrollContent}
-      showsVerticalScrollIndicator={false}
-    >
-      {/* Page Header */}
-      <View style={styles.header}>
-        <View style={styles.headerTop}>
-          <View style={styles.titleRow}>
-            <Feather name="book-open" size={20} color={colors.accent} />
-            <Text style={styles.title}>Ringkasan Mata Kuliah</Text>
-          </View>
-          <TouchableOpacity
-            onPress={toggleDarkMode}
-            style={styles.themeToggle}
-            activeOpacity={0.7}
-          >
-            <Feather
-              name={isDarkMode ? 'sun' : 'moon'}
-              size={18}
-              color={colors.accent}
-            />
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.subtitle}>
-          {dataMataKuliah.length} Mata Kuliah · {totalSks} SKS Total
-        </Text>
-      </View>
-
-      {/* Render using .map() as required */}
-      {dataMataKuliah.map((matkul) => (
+    <FlatList
+      data={dataMataKuliah}
+      keyExtractor={(item) => item.kode}
+      renderItem={({ item, index }) => (
         <MatkulCard
-          key={matkul.kode}
-          matkul={matkul}
-          isActive={isWide && selected?.kode === matkul.kode}
-          onPress={() => setSelected(matkul)}
+          matkul={item}
+          isActive={isWide && selected?.kode === item.kode}
+          onPress={() => setSelected(item)}
+          spineColor={SpineColors[index % SpineColors.length]}
         />
-      ))}
-
-      <View style={styles.bottomPadding} />
-    </ScrollView>
+      )}
+      ListHeaderComponent={
+        <View style={styles.header}>
+          <View style={styles.headerTop}>
+            <View style={styles.titleRow}>
+              <Feather name="bookmark" size={20} color={colors.accentGold} />
+              <Text style={styles.title}>Ringkasan Mata Kuliah</Text>
+            </View>
+            <TouchableOpacity
+              onPress={toggleDarkMode}
+              style={styles.themeToggle}
+              activeOpacity={0.7}
+            >
+              <Feather
+                name={isDarkMode ? 'sun' : 'moon'}
+                size={18}
+                color={colors.accentGold}
+              />
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.subtitle}>
+            {dataMataKuliah.length} Mata Kuliah · {totalSks} SKS Total
+          </Text>
+        </View>
+      }
+      style={styles.flatList}
+      contentContainerStyle={styles.flatListContent}
+      showsVerticalScrollIndicator={false}
+    />
   );
 
   const detailContent = selected ? <DetailPanel matkul={selected} /> : null;
@@ -103,12 +102,12 @@ export default function RingkasanScreen() {
   );
 }
 
-const createStyles = (colors: typeof Colors) => StyleSheet.create({
-  scrollView: {
+const createStyles = (colors: any) => StyleSheet.create({
+  flatList: {
     flex: 1,
     backgroundColor: colors.background,
   },
-  scrollContent: {
+  flatListContent: {
     paddingTop: Spacing.xl,
     paddingBottom: Spacing.xxl,
   },
@@ -128,25 +127,23 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
     gap: Spacing.sm,
   },
   title: {
-    fontFamily: Fonts.bold,
+    fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif',
     fontSize: 20,
-    color: colors.textPrimary,
+    fontWeight: 'bold',
+    color: colors.text,
   },
   themeToggle: {
     padding: Spacing.sm,
-    borderRadius: 0,
-    borderWidth: 2,
+    borderRadius: 8,
+    borderWidth: 1,
     borderColor: colors.border,
-    backgroundColor: colors.surface,
+    backgroundColor: colors.surfaceLow,
   },
   subtitle: {
     fontFamily: Fonts.regular,
     fontSize: 13,
     color: colors.textSecondary,
     marginLeft: 28,
-  },
-  bottomPadding: {
-    height: 20,
   },
   detailScreenContainer: {
     flex: 1,
@@ -157,9 +154,9 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: Spacing.lg,
     paddingVertical: Spacing.md,
-    borderBottomWidth: 3,
+    borderBottomWidth: 1,
     borderBottomColor: colors.border,
-    backgroundColor: colors.tabBarBackground,
+    backgroundColor: colors.surfaceLow,
   },
   backButton: {
     flexDirection: 'row',
@@ -169,6 +166,6 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
   backText: {
     fontFamily: Fonts.medium,
     fontSize: 15,
-    color: colors.accent,
+    color: colors.accentGold,
   },
 });

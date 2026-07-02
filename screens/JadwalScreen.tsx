@@ -87,10 +87,10 @@ const createStyles = (colors: typeof Colors) => StyleSheet.create({
   },
   themeToggle: {
     padding: Spacing.sm,
-    borderRadius: 0,
-    borderWidth: 2,
+    borderRadius: 8,
+    borderWidth: 1,
     borderColor: colors.border,
-    backgroundColor: colors.surface,
+    backgroundColor: colors.surfaceLow,
   },
   subtitle: {
     fontFamily: Fonts.regular,

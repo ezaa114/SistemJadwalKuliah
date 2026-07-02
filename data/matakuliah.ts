@@ -9,48 +9,57 @@ export interface MataKuliah {
 
 export const dataMataKuliah: MataKuliah[] = [
   {
-    kode: 'IF-401',
+    kode: 'IF-601',
+    nama: 'Machine Learning',
+    sks: 3,
+    dosen: 'Ause Bellapansa, S.T., M.Cs., M.Kom',
+    deskripsi:
+      'Mempelajari konsep dan algoritma machine learning meliputi supervised learning, unsupervised learning, model evaluation, feature engineering, serta implementasi menggunakan Python dan library scikit-learn.',
+    semester: 6,
+  },
+  {
+    kode: 'IF-602',
     nama: 'Pemrograman Mobile',
     sks: 3,
-    dosen: 'Dr. Ahmad Fauzi',
+    dosen: 'Panji Rakhmat Setiawan, S.Kom., MMSI',
     deskripsi:
-      'Mempelajari pengembangan aplikasi mobile menggunakan React Native dan Expo, mencakup UI components, navigasi, state management, dan deployment.',
-    semester: 7,
+      'Pengembangan aplikasi mobile cross-platform menggunakan React Native dan Expo, mencakup UI components, navigasi, state management, API integration, dan deployment ke Play Store/App Store.',
+    semester: 6,
   },
   {
-    kode: 'IF-312',
-    nama: 'Basis Data Lanjut',
+    kode: 'IF-603',
+    nama: 'Big Data',
     sks: 3,
-    dosen: 'Dr. Sari Dewi',
+    dosen: 'Dr. Ir. Evizal, S.T., M.Eng',
     deskripsi:
-      'Membahas konsep lanjutan basis data relasional dan NoSQL, termasuk optimasi query, indexing, transaksi, dan desain skema.',
-    semester: 5,
+      'Membahas arsitektur dan teknologi Big Data termasuk Hadoop, Spark, data pipeline, data lake, serta teknik pemrosesan dan analisis data berskala besar.',
+    semester: 6,
   },
   {
-    kode: 'IF-405',
-    nama: 'Kecerdasan Buatan',
+    kode: 'IF-604',
+    nama: 'Routing & Switching',
     sks: 3,
-    dosen: 'Dr. Rizal Hakim',
+    dosen: 'Yudhi Arta, S.T., M.Kom',
     deskripsi:
-      'Pengantar AI meliputi search algorithms, machine learning dasar, neural networks, dan penerapan dalam problem solving.',
-    semester: 7,
+      'Mempelajari konfigurasi dan manajemen perangkat jaringan (router & switch), protokol routing (OSPF, EIGRP, BGP), VLAN, inter-VLAN routing, dan troubleshooting jaringan enterprise.',
+    semester: 6,
   },
   {
-    kode: 'IF-308',
-    nama: 'Jaringan Komputer',
-    sks: 2,
-    dosen: 'Dr. Putri Indah',
-    deskripsi:
-      'Mempelajari arsitektur jaringan, protokol TCP/IP, routing, switching, keamanan jaringan, dan administrasi server.',
-    semester: 5,
-  },
-  {
-    kode: 'IF-402',
-    nama: 'Rekayasa Perangkat Lunak',
+    kode: 'IF-605',
+    nama: 'Implementasi dan Pengujian Perangkat Lunak',
     sks: 3,
-    dosen: 'Dr. Hendra Putra',
+    dosen: 'Dr. Ir. Akmar Efendi, S.Kom., M.Kom',
     deskripsi:
-      'Membahas metodologi pengembangan software (Agile, Scrum), requirement engineering, testing, CI/CD, dan manajemen proyek.',
-    semester: 7,
+      'Membahas strategi implementasi perangkat lunak, teknik pengujian (unit testing, integration testing, system testing), test automation, CI/CD pipeline, dan quality assurance.',
+    semester: 6,
+  },
+  {
+    kode: 'IF-606',
+    nama: 'Natural Language Processing',
+    sks: 3,
+    dosen: 'Dr. Arbi Haza Nasution, B.IT.(Hons), M.IT',
+    deskripsi:
+      'Pengantar pemrosesan bahasa alami meliputi tokenisasi, POS tagging, named entity recognition, sentiment analysis, word embeddings, dan penerapan model transformer.',
+    semester: 6,
   },
 ];

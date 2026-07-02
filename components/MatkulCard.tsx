@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { MataKuliah } from '../data/matakuliah';
-import { Colors, Spacing, BorderRadius, Fonts } from '../constants/theme';
+import { Colors, Spacing, Fonts } from '../constants/theme';
 import { useTheme } from '../context/ThemeContext';
 
 interface MatkulCardProps {
   matkul: MataKuliah;
   onPress: () => void;
   isActive?: boolean;
+  spineColor: string;
 }
 
-export default function MatkulCard({ matkul, onPress, isActive }: MatkulCardProps) {
+export default function MatkulCard({ matkul, onPress, isActive, spineColor }: MatkulCardProps) {
   const [pressed, setPressed] = useState(false);
   const { colors } = useTheme();
   const styles = createStyles(colors);
@@ -34,99 +35,118 @@ export default function MatkulCard({ matkul, onPress, isActive }: MatkulCardProp
           isActive && styles.cardActive,
         ]}
       >
-        <View style={styles.header}>
-          <View style={styles.titleRow}>
-            <Text style={styles.nama} numberOfLines={1}>
-              {matkul.nama}
-            </Text>
-            <View style={[styles.sksBadge, isActive && styles.sksBadgeActive]}>
-              <Text style={[styles.sksText, isActive && styles.sksTextActive]}>{matkul.sks} SKS</Text>
-            </View>
-          </View>
+        {/* Spine bar */}
+        <View style={[styles.spine, { backgroundColor: spineColor }]} />
+
+        {/* Content columns */}
+        <View style={styles.mainContent}>
           <Text style={styles.kode}>{matkul.kode}</Text>
+          <Text style={styles.nama} numberOfLines={2}>
+            {matkul.nama}
+          </Text>
+          <View style={styles.dosenRow}>
+            <Feather name="user" size={12} color={colors.textSecondary} />
+            <Text style={styles.dosenText} numberOfLines={1}>
+              {matkul.dosen}
+            </Text>
+          </View>
         </View>
 
-        <View style={styles.dosenRow}>
-          <Feather name="user" size={14} color={colors.textSecondary} />
-          <Text style={styles.dosenText}>{matkul.dosen}</Text>
+        {/* SKS Badge */}
+        <View style={styles.rightContent}>
+          <View style={styles.sksBadge}>
+            <Text style={styles.sksNumber}>{matkul.sks}</Text>
+            <Text style={styles.sksLabel}>sks</Text>
+          </View>
         </View>
       </View>
     </Pressable>
   );
 }
 
-const createStyles = (colors: typeof Colors) => StyleSheet.create({
+const createStyles = (colors: any) => StyleSheet.create({
   pressable: {
     marginHorizontal: Spacing.lg,
     marginBottom: Spacing.md,
-    borderRadius: BorderRadius.card,
+    borderRadius: 12,
   },
   card: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: colors.surface,
-    borderRadius: BorderRadius.card,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: colors.border,
-    padding: Spacing.lg,
-    
-    // Soft Elegant Shadow
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+    paddingVertical: Spacing.md,
+    paddingHorizontal: Spacing.lg,
+    paddingLeft: Spacing.lg + 6,
+    position: 'relative',
+    overflow: 'hidden',
   },
   cardActive: {
-    backgroundColor: colors.accentTransparent, // Accent overlay
-    borderColor: colors.accent,
-    borderWidth: 1.5,
-  },
-  header: {
-    marginBottom: Spacing.md,
-  },
-  titleRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: Spacing.xs,
-    gap: Spacing.sm,
-  },
-  nama: {
-    fontFamily: Fonts.bold,
-    fontSize: 16,
-    color: colors.textPrimary,
-    flex: 1,
-  },
-  sksBadge: {
     backgroundColor: colors.surfaceLow,
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.xs,
-    borderRadius: BorderRadius.badge,
+    borderColor: colors.accentGold,
   },
-  sksBadgeActive: {
-    backgroundColor: colors.accent,
+  spine: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: 4,
   },
-  sksText: {
-    fontFamily: Fonts.medium,
-    fontSize: 11,
-    color: colors.textSecondary,
-  },
-  sksTextActive: {
-    color: '#FFFFFF', // Clean high contrast contrast for badge
+  mainContent: {
+    flex: 1,
+    marginRight: Spacing.md,
   },
   kode: {
     fontFamily: Fonts.regular,
-    fontSize: 12,
+    fontSize: 11,
+    textTransform: 'uppercase',
     color: colors.textSecondary,
-    marginTop: Spacing.xs,
+    marginBottom: 2,
+  },
+  nama: {
+    fontFamily: Fonts.medium,
+    fontSize: 15,
+    color: colors.text,
+    marginBottom: Spacing.xs,
   },
   dosenRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.sm,
+    gap: Spacing.xs,
   },
   dosenText: {
     fontFamily: Fonts.regular,
-    fontSize: 13,
+    fontSize: 12,
     color: colors.textSecondary,
+    flex: 1,
+  },
+  rightContent: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sksBadge: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    borderWidth: 1.5,
+    borderColor: colors.accentGold,
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sksNumber: {
+    fontFamily: Fonts.bold,
+    fontSize: 13,
+    color: colors.accentGoldText,
+    lineHeight: 14,
+  },
+  sksLabel: {
+    fontFamily: Fonts.regular,
+    fontSize: 8,
+    color: colors.accentGoldText,
+    lineHeight: 8,
+    marginTop: -2,
   },
 });
